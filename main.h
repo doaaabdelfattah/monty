@@ -4,13 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <stdarg.h>
-#include <ctype.h>
-#include <sys/types.h>
+#include <sys/wait.h>
 #include <sys/stat.h>
 
-
-#define STACK 0
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -47,17 +43,23 @@ int err_arg(void);
 int err_invalid_instr(int line, char *str);
 int err_open_file(char *str);
 int err_malloc(void);
+int err_int(int line);
 
 
 
 /* Primary functions */
 int monty(FILE *fileptr);
+void (*handle_opcode(char *str))(stack_t**, unsigned int);
 
 /* Stack Functions */
 void my_push (stack_t **stack, unsigned int line_number);
 void my_pall (stack_t **stack, unsigned int line_number);
+void my_pop (stack_t **stack, unsigned int line_number);
+void my_swap (stack_t **stack, unsigned int line_number);
+void my_add (stack_t **stack, unsigned int line_number);
+void my_nop (stack_t **stack, unsigned int line_number);
 void my_pint (stack_t **stack, unsigned int line_number);
 
-
+int empty_line(char *str);
 
 #endif

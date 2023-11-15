@@ -33,7 +33,10 @@ stack_t *create_node(int n)
 	stack_t *new_node;
 	new_node = (stack_t *)malloc(sizeof(stack_t));
 	if (new_node == NULL)
-		return (err_malloc());
+		{
+			err_malloc();
+			return (NULL);
+		}
 
 	new_node->next = NULL;
 	new_node->prev = NULL;

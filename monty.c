@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * monty - main function to execute Monty Bytecode
  * @fileptr: File descriptor for an open script
@@ -6,13 +7,14 @@
 */
 int monty(FILE *fileptr)
 {
-    int exit_status, bufsize, line_num;
+    int bufsize, line_num;
+    stack_t **STACK;
     char *input, *opcode;
     void (*operation)(stack_t**, unsigned int);
-    unsigned int line_num = 0;
-    exit_status = 0;
-
-    while(getline(&input, &bufsize, fileptr) == -1)
+    bufsize = 0;
+    line_num = 0;
+    STACK = NULL;
+    while (getline(&input, &bufsize, fileptr) != -1)
     {
         /* Line numbers always start at 1 */
         line_num++;
@@ -33,8 +35,10 @@ int monty(FILE *fileptr)
         if (operation == NULL)
             return(err_invalid_instr(line_num, opcode));
 
-        return (operation(opcode, line_num));
+        operation(STACK, line_num);
     }
+    free(input);
+    return(0);
 
 }
 

@@ -7,13 +7,20 @@
 
 void my_push (stack_t **stack, unsigned int line_number)
 {
-    stack_t *new_node, *tmp;
-    int i;
+    stack_t *new_node;
     new_node = (stack_t *)malloc(sizeof(stack_t));
     if (new_node == NULL)
-        return (err_malloc());
+    {
+        err_malloc();
+        return;
+    }
+    if (value == NULL)
+    {
+        err_int(line_number);
+        return;
+    }
 
-    new_node->n = value;
+    new_node->n = atoi(value);
     new_node->prev = *stack;
     new_node->next = NULL;
     /* handle the case when the stack is not empty */
