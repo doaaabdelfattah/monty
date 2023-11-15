@@ -6,9 +6,11 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
 
 #define STACK 0
-#define QUEUE 1
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,6 +40,24 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+extern char *value;
+
+/* Errors Functions */
+int err_arg(void);
+int err_invalid_instr(int line, char *str);
+int err_open_file(char *str);
+int err_malloc(void);
+
+
+
+/* Primary functions */
+int monty(FILE *fileptr);
+
+/* Stack Functions */
+void my_push (stack_t **stack, unsigned int line_number);
+void my_pall (stack_t **stack, unsigned int line_number);
+void my_pint (stack_t **stack, unsigned int line_number);
+
 
 
 #endif

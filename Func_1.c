@@ -5,26 +5,21 @@
  * @line_number: currrent working line of Monty bytecode/
 */
 
-void _push (stack_t **stack, unsigned int line_number)
+void my_push (stack_t **stack, unsigned int line_number)
 {
     stack_t *new_node, *tmp;
     int i;
     new_node = (stack_t *)malloc(sizeof(stack_t));
     if (new_node == NULL)
+        return (err_malloc());
+
+    new_node->n = value;
+    new_node->prev = *stack;
+    new_node->next = NULL;
+    /* handle the case when the stack is not empty */
+    if (*stack != NULL)
     {
-        return;
-        /* Print error malloc */
+        (*stack)->next = new_node;
     }
-    
-
-}
-
-
-int check_mode(stack_t *stack)
-{
-	if (stack->n == STACK)
-		return (STACK);
-	else if (stack->n == QUEUE)
-		return (QUEUE);
-	return (2);
+    *stack = new_node;
 }
