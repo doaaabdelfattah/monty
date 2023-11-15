@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * err_int - If value not an integer or if there is no argument given to push
  * @line: line number

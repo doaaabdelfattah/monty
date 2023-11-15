@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
 *handle_builtin - function to handle if the command is built ib
 *@str: string to be checked

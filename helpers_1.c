@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * empty_line - check if the line is empty line
  * @str: pointer to the line

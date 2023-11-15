@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
  * err_arg - If user does not give any file
  * Return: Exit Failure
