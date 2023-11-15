@@ -1,5 +1,7 @@
 #include "main.h"
+#define  _POSIX_C_SOURCE 200809L
 #include <stdio.h>
+
 /**
  * monty - main function to execute Monty Bytecode
  * @fileptr: File descriptor for an open script
