@@ -1,4 +1,3 @@
-
 #include "main.h"
 /**
 *handle_builtin - function to handle if the command is built ib
