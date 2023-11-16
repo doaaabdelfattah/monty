@@ -64,8 +64,8 @@ void (*handle_opcode(char *str))(stack_t**, unsigned int)
 		{"pall", my_pall},
 		{"pint", my_pint},
 		{"pop", my_pop},
-		  /*{"swap", my_swap},
-		  {"add", my_add},
+		{"swap", my_swap},
+		  /*{"add", my_add},
 		  {"nop", my_nop},*/
 		{NULL, NULL}};
 	int i;
