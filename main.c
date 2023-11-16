@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     /* Check if the file was opened successfully */
     if (fileptr == NULL)
         return (err_open_file(argv[1]));
-    
+    printf("opened");
     exit_status = monty(fileptr);
     fclose(fileptr);
     return (exit_status);

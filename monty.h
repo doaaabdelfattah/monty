@@ -1,12 +1,15 @@
 #ifndef MONTY_H
 #define MONTY_H
-#define  _POSIX_C_SOURCE 200809L
+
+#define _GNU_SOURCE
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <stdarg.h>
+#include <fcntl.h>
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -37,7 +40,9 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-extern char *value;
+
+
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 /* Errors Functions */
 int err_arg(void);
@@ -52,15 +57,18 @@ int err_int(int line);
 int monty(FILE *fileptr);
 void (*handle_opcode(char *str))(stack_t**, unsigned int);
 
-/* Stack Functions */
+/* Stack Function */
+int start_stack(stack_t **stack);
+void free_stack(stack_t **stack);
+
+/* operation Functions */
 void my_push (stack_t **stack, unsigned int line_number);
-void my_pall (stack_t **stack, unsigned int line_number);
+/* void my_pall (stack_t **stack, unsigned int line_number);
 void my_pop (stack_t **stack, unsigned int line_number);
 void my_swap (stack_t **stack, unsigned int line_number);
 void my_add (stack_t **stack, unsigned int line_number);
 void my_nop (stack_t **stack, unsigned int line_number);
-void my_pint (stack_t **stack, unsigned int line_number);
-
+void my_pint (stack_t **stack, unsigned int line_number);*/
 int empty_line(char *str);
 
 #endif
