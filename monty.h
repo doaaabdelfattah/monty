@@ -71,6 +71,7 @@ void my_pall (stack_t **stack, unsigned int line_number);
 void my_pint (stack_t **stack, unsigned int line_number);
 void my_pop (stack_t **stack, unsigned int line_number);
 void my_swap (stack_t **stack, unsigned int line_number);
+void my_add (stack_t **stack, unsigned int line_number);
 /* Helpers */
 int empty_line(char *str);
 void free_grid(char **grid);
