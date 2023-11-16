@@ -22,7 +22,7 @@ void my_pop(stack_t **stack, unsigned int line_number)
     }
     else
     {
-    *stack = (*stack)->next;
+    *stack = ptr->next;
     (*stack)->prev = NULL;
     free(ptr);
     }
