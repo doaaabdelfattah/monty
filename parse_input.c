@@ -7,53 +7,51 @@
 
 char **pars_input(char *input)
 {
-int i, j;
-char *token;
-int counter;
-char **opcode;
+	int i, j, counter;
+	char *token;
 
-i = 0;
-if (input == NULL)
-	return (NULL);
-counter = count_tokens(input);
-if (counter < 0)
-	return (NULL);
-opcode = malloc(sizeof(char *) * (counter + 1));
-if (opcode == NULL)
-{
-	free(input);
-	err_malloc();
-	return(NULL);
-}
-token = strtok(input, " \n\t\a\b");
-if (token == NULL)
-{
-	free(input);
-	free(opcode);
-	return (NULL);
-}
-while (token)
-{
-	opcode[i] = malloc(sizeof(char) * (strlen(token) + 1));
-	if (opcode[i] == NULL)
+	i = 0;
+	if (input == NULL)
+		return (NULL);
+	counter = count_tokens(input);
+	if (counter < 0)
+		return (NULL);
+	opcode = malloc(sizeof(char *) * (counter + 1));
+	if (opcode == NULL)
 	{
-		for (j = 0; j < i; j++)
-			free(opcode[j]);
-		free(opcode);
 		free(input);
 		err_malloc();
-		return(NULL);	}
-	strcpy(opcode[i], token);
-	i++;
-	token = strtok(NULL, " \n\t");
-}
-opcode[counter] = NULL;
-return (opcode); }
+		return (NULL);
+	}
+	token = strtok(input, " \n\t\a\b");
+	if (token == NULL)
+	{
+		free(input);
+		free(opcode);
+		return (NULL);
+	}
+	while (token)
+	{
+		opcode[i] = malloc(sizeof(char) * (strlen(token) + 1));
+		if (opcode[i] == NULL)
+		{
+			for (j = 0; j < i; j++)
+				free(opcode[j]);
+			free(opcode);
+			free(input);
+			err_malloc();
+			return (NULL);	}
+		strcpy(opcode[i], token);
+		i++;
+		token = strtok(NULL, " \n\t\a\b");
+	}
+	opcode[counter] = NULL;
+	return (opcode); }
 
 /**
-*count_tokens - count number of tokens
-*@input: input
-*Return: count of tokens
+* count_tokens - count number of tokens
+* @input: input
+* Return: count of tokens
 */
 
 int count_tokens(char *input)
