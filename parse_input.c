@@ -49,10 +49,10 @@ char **pars_input(char *input)
 	return (opcode); }
 
 /**
-* count_tokens - count number of tokens
-* @input: input
-* Return: count of tokens
-*/
+ * count_tokens - count number of tokens
+ * @input: input
+ * Return: count of tokens
+ */
 
 int count_tokens(char *input)
 {

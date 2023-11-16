@@ -13,30 +13,27 @@ int monty(FILE *fileptr)
 	stack_t *stack;
 	char *input;
 	void (*operation)(stack_t **, unsigned int);
+
 	input = NULL;
 	bufsize = 0;
 	line_num = 0;
 	stack = NULL;
-
 	/* Initialize stack */
 	start_stack(&stack);
-    /* iterate over lines */
+	/* iterate over lines */
 	while (getline(&input, &bufsize, fileptr) != -1)
 	{
-		/* Line numbers always start at 1 */
-		line_num++;
-		/* Get the opcode array of strings */
-		opcode = pars_input(input);
+		line_num++; /* Line numbers always start at 1 */
+		opcode = pars_input(input); /* Get the opcode array of strings */
 		if (opcode == NULL)
 		{
 			if (empty_line(input))
 				continue;
 			free_stack(&stack);
 			free(input);
-			return(err_malloc());
+			return (err_malloc());
 		}
-        /* Get the function required*/
-		operation = handle_opcode(opcode[0]);
+		operation = handle_opcode(opcode[0]); /* Get the function required*/
 		if (operation == NULL)
 		{
 			free_stack(&stack);
@@ -53,7 +50,7 @@ int monty(FILE *fileptr)
 }
 
 /**
- *handle_builtin - function to handle if the command is built ib
+ *handle_opcode - function to handle if the command is built ib
  *@str: string to be checked
  *Return: the function
  */
@@ -77,5 +74,5 @@ void (*handle_opcode(char *str))(stack_t**, unsigned int)
 			return (fun_list[i].f);
 		i++;
 	}
-	return(NULL);
+	return (NULL);
 }

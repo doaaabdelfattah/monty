@@ -1,5 +1,5 @@
 #include "monty.h"
-char **opcode = NULL;
+char **opcode;
 /**
  * main - Entry point for monty program
  * @argc: the count of arguments passed to the program
@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 	int exit_status;
 	FILE *fileptr;
 
+	opcode = NULL;
 	exit_status = 0;
 	if (argc != 2)
 		return (err_arg());

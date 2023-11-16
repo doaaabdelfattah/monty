@@ -19,7 +19,7 @@ void my_push(stack_t **stack,  unsigned int line_number)
 		return;
 	}
 	/* Check if the number is valid or the array itself */
-	if (opcode == NULL ||opcode[1] == NULL)
+	if (opcode == NULL || opcode[1] == NULL)
 	{
 		err_int(line_number);
 		free(new_node);
@@ -41,16 +41,13 @@ void my_push(stack_t **stack,  unsigned int line_number)
 		i++;
 	}
 	new_node->n = atoi(opcode[1]);
-    /* Connect both sides */
+	/* Connect both sides */
 	new_node->next = *stack;
 	new_node->prev = NULL;
 	/* handle the case when the stack is not empty*/
 	if (*stack != NULL)
-	{
 		(*stack)->prev = new_node;
-	}
-	*stack = new_node;
-}
+	*stack = new_node; }
 /**
  * my_pall - print all element of the stack.
  * @stack: pointer to the top element of the stack
@@ -79,11 +76,11 @@ void my_pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
 
 void my_pint(stack_t **stack, unsigned int line_number)
 {
-    if (*stack != NULL)
-	    printf("%d\n", (*stack)->n);
-    else
-    {
-        fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+	if (*stack != NULL)
+		printf("%d\n", (*stack)->n);
+	else
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 }
