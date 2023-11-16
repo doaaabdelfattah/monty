@@ -53,8 +53,6 @@ void my_swap(stack_t **stack, unsigned int line_number)
     last->n = pre->n;
     pre->n = data;
 }
-
-
 /**
  * my_add - adds the top two elements of the stack.
  * @stack: pointer to the top element of the stack
@@ -82,4 +80,14 @@ void my_add(stack_t **stack, unsigned int line_number)
     if(*stack == NULL)
     /* Stack is empty, set the stack pointer to NULL */
         *stack = NULL;
+}
+/**
+ * my_nop -doesn't do anything
+ * @stack: pointer to the top element of the stack
+ * @line_number: currrent working line of Monty bytecode/
+ */
+
+void my_nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+    return;
 }
