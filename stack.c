@@ -6,7 +6,8 @@
 */
 int start_stack(stack_t **stack)
 {
-    stack_t *new_node;
+    *stack = NULL;
+    /*stack_t *new_node;
     new_node = (stack_t *)malloc(sizeof(stack_t));
     if (new_node == NULL)
         return(err_malloc());
@@ -14,8 +15,8 @@ int start_stack(stack_t **stack)
     new_node->next = NULL;
     new_node->prev = NULL;
     new_node->n = 0;
-    *stack = new_node;
-    printf("stack created");
+    *stack = new_node;*/
+    /* printf("stack created\n");*/
     return(0);
 }
 

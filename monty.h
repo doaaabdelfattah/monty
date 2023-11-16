@@ -10,7 +10,7 @@
 #include <stdarg.h>
 #include <fcntl.h>
 
-
+extern char **opcode;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -56,15 +56,19 @@ int err_int(int line);
 /* Primary functions */
 int monty(FILE *fileptr);
 void (*handle_opcode(char *str))(stack_t**, unsigned int);
+char **pars_input(char *input);
+int count_tokens(char *input);
+
 
 /* Stack Function */
 int start_stack(stack_t **stack);
 void free_stack(stack_t **stack);
 
+
 /* operation Functions */
 void my_push (stack_t **stack, unsigned int line_number);
-/* void my_pall (stack_t **stack, unsigned int line_number);
-void my_pop (stack_t **stack, unsigned int line_number);
+void my_pall (stack_t **stack, unsigned int line_number);
+/*void my_pop (stack_t **stack, unsigned int line_number);
 void my_swap (stack_t **stack, unsigned int line_number);
 void my_add (stack_t **stack, unsigned int line_number);
 void my_nop (stack_t **stack, unsigned int line_number);
