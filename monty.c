@@ -18,10 +18,9 @@ int monty(FILE *fileptr)
 	bufsize = 0;
 	line_num = 0;
 	stack = NULL;
-	/* Initialize stack */
-	start_stack(&stack);
-	/* iterate over lines */
-	while (getline(&input, &bufsize, fileptr) != -1)
+	start_stack(&stack);/* Initialize stack */
+
+	while (getline(&input, &bufsize, fileptr) != -1) /* iterate over lines */
 	{
 		line_num++; /* Line numbers always start at 1 */
 		if (empty_line(input)) /* if there's empty lines  */
@@ -33,13 +32,19 @@ int monty(FILE *fileptr)
 			free(input);
 			return (err_malloc());
 		}
+		else if (opcode[0][0] == '#') /* Handle comments */
+		{
+			free_grid(opcode);
+			continue;
+		}
 		operation = handle_opcode(opcode[0]); /* Get the function required*/
 		if (operation == NULL)
 		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode[0]);
 			free_stack(&stack);
 			free_grid(opcode);
 			free(input);
-			return (err_invalid_instr(line_num, opcode[0]));
+			return (EXIT_FAILURE);
 		}
 		operation(&stack, line_num);
 		free_grid(opcode);

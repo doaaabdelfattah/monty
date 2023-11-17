@@ -8,5 +8,5 @@
 int err_int(int line)
 {
 	fprintf(stderr, "L%d: usage: push integer\n", line);
-	exit(EXIT_FAILURE);
+	return(EXIT_FAILURE);
 }

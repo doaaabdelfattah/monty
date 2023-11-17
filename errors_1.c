@@ -7,7 +7,7 @@
 int err_arg(void)
 {
 	fprintf(stderr, "USAGE: monty file\n");
-	exit(EXIT_FAILURE);
+	return(EXIT_FAILURE);
 }
 
 
@@ -20,7 +20,7 @@ int err_arg(void)
 int err_invalid_instr(int line, char *str)
 {
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, str);
-	exit(EXIT_FAILURE);
+	return(EXIT_FAILURE);
 }
 
 /**
@@ -31,7 +31,7 @@ int err_invalid_instr(int line, char *str)
 int err_open_file(char *str)
 {
 	fprintf(stderr, "Error: Can't open %s\n", str);
-	exit(EXIT_FAILURE);
+	return(EXIT_FAILURE);
 }
 
 /**
@@ -41,6 +41,6 @@ int err_open_file(char *str)
 int err_malloc(void)
 {
 	fprintf(stderr, "Error: malloc failed\n");
-	exit(EXIT_FAILURE);
+	return(EXIT_FAILURE);
 }
 
