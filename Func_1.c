@@ -36,7 +36,7 @@ void my_push(stack_t **stack,  unsigned int line_number)
 		{
 			err_int(line_number);
 			free(new_node);
-			return;
+			exit(EXIT_FAILURE);
 		}
 		i++;
 	}

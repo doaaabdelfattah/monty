@@ -30,20 +30,15 @@ int monty(FILE *fileptr)
 		{
 			free_stack(&stack);
 			free(input);
-			return (err_malloc());
+			exit(err_malloc());
 		}
-		else if (opcode[0][0] == '#') /* Handle comments */
-		{
-			free_grid(opcode);
+		else if (opcode[0][0] == '#' && (free_grid(opcode), 1)) /* Handle comments */
 			continue;
-		}
 		operation = handle_opcode(opcode[0]); /* Get the function required*/
 		if (operation == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode[0]);
-			free_stack(&stack);
-			free_grid(opcode);
-			free(input);
+			triple_free(&stack, opcode, input);
 			return (EXIT_FAILURE);
 		}
 		operation(&stack, line_num);

@@ -70,3 +70,15 @@ size_t dlistint_len(const stack_t *h)
 	}
 	return (count);
 }
+/**
+ * triple_free - free all
+ * @stack: pointer to the stack
+ * @op: opcode 2d array
+ * @input: line
+ */
+void triple_free(stack_t **stack, char **op, char *input)
+{
+	free_stack(stack);
+	free_grid(op);
+	free(input);
+}

@@ -41,7 +41,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 /* Errors Functions */
@@ -50,8 +49,6 @@ int err_invalid_instr(int line, char *str);
 int err_open_file(char *str);
 int err_malloc(void);
 int err_int(int line);
-
-
 
 /* Primary functions */
 int monty(FILE *fileptr);
@@ -78,5 +75,6 @@ void my_sub (stack_t **stack, unsigned int line_number);
 int empty_line(char *str);
 void free_grid(char **grid);
 size_t dlistint_len(const stack_t *h);
+void triple_free(stack_t **stack, char **op, char *input);
 
 #endif
