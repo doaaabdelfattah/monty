@@ -41,7 +41,7 @@ void my_swap(stack_t **stack, unsigned int line_number)
 	stack_t *last, *pre;
 	int data;
 	/* if list is empty or has only one node:*/
-	if (dlistint_len(*stack) < 2)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
