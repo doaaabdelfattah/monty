@@ -9,8 +9,8 @@
 int monty(FILE *fileptr)
 {
 	size_t bufsize;
-	int line_num;
 	stack_t *stack;
+	int line_num;
 	char *input;
 	void (*operation)(stack_t **, unsigned int);
 
@@ -24,11 +24,11 @@ int monty(FILE *fileptr)
 	while (getline(&input, &bufsize, fileptr) != -1)
 	{
 		line_num++; /* Line numbers always start at 1 */
+		if (empty_line(input)) /* if there's empty lines  */
+			continue;
 		opcode = pars_input(input); /* Get the opcode array of strings */
 		if (opcode == NULL)
 		{
-			if (empty_line(input))
-				continue;
 			free_stack(&stack);
 			free(input);
 			return (err_malloc());

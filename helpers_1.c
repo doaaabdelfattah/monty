@@ -17,11 +17,11 @@ int empty_line(char *str)
 		{
 			if (str[i] == delim[j])
 				break;
-			/* If the inner loop reached the end of 'delims' (no match found) */
-			/* it means the current character in 'line' is not a delimiter*/
-			if (delim[j] == '\0')
-				return (0);
 		}
+		/* If the inner loop reached the end of 'delims' (no match found) */
+		/* it means the current character in 'line' is not a delimiter*/
+		if (delim[j] == '\0')
+			return (0);
 	}
 	/* If the outer loop completes without finding any non-delimiter characters*/
 	/* Return 1, indicating that the line is empty*/
