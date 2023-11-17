@@ -94,7 +94,7 @@ void my_nop(
 {
 }
 /**
- * my_add - adds the top two elements of the stack.
+ * my_sub - sub the top two elements of the stack.
  * @stack: pointer to the top element of the stack
  * @line_number: currrent working line of Monty bytecode/
  */
