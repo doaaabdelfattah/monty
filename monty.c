@@ -64,6 +64,7 @@ void (*handle_opcode(char *str))(stack_t**, unsigned int)
 		{"swap", my_swap},
 		{"add", my_add},
 		{"nop", my_nop},
+		{"sub", my_sub},
 		{NULL, NULL}};
 	int i;
 
